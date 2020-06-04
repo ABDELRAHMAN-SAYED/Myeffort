@@ -1,0 +1,47 @@
+package f;
+
+public class playgrounds {
+	static String playground_type,playground_location;
+	 static int playground_capacity;
+	static double price_per_hour,available_time;
+	public playgrounds( String playground_type,String playground_location,int playground_capacity,double price_per_hour,double available_time){
+		this.playground_type=playground_type;
+		this.playground_capacity=playground_capacity;
+		this.playground_location=playground_location;
+		this.price_per_hour=price_per_hour;
+		this.available_time=available_time;
+	}
+	public static void set_type(String type){
+		playground_type=type;
+	}
+	public static void set_location(String location){
+		playground_location=location;
+	}
+	public static void set_capacity(int capacity){
+		playground_capacity=capacity;
+	}
+	public static void set_hourlyPrice(double hourly_price){
+		price_per_hour=hourly_price;
+	}
+	public static void set_available_hours(double available){
+		available_time=available;
+	}
+	
+	public String get_type(){
+		return playground_type;
+	}
+	public String get_location(){
+		return playground_location;
+	}
+	public int get_capacity(){
+		return playground_capacity;
+	}
+	public double get_hourlyprice(){
+		return price_per_hour;
+	}
+	public String tostring()
+	{
+	return "type:"+" "+playground_type+" " +"location:"+" "+ playground_location +" "+"capacity:"+" "+ playground_capacity +" "+"price_of_the_reseved_hour:"+" "+price_per_hour+" "+"the_reserved_time_slot"+" "+available_time;
+	}
+
+}

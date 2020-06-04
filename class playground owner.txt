@@ -1,0 +1,97 @@
+package f;
+import java.util.*;
+public class PlaygroundOwner {
+	static String name,address,email,playground_type,playground_location;
+	static int playground_capacty,available_slot;
+	static double price_per_hour,account_palance;
+	static ArrayList<String>PLAYGROUND_TYPE=new ArrayList< String>();
+	static ArrayList<String>PLAYGROUND_LOCATION=new ArrayList< String>();
+	static ArrayList<Integer>AVAILABLE_SLOTS=new ArrayList< Integer>();
+	static ArrayList<Double>PRICE_PER_HOUR=new ArrayList<Double>();
+	static ArrayList<Integer>PLAYGROUND_CAPACITY=new ArrayList< Integer>();
+	static ArrayList<String>OWNERSNAME=new ArrayList< String>();
+	static ArrayList<String>OWNERSADDRESS=new ArrayList< String>();
+	static ArrayList<String>OWNERSEMAILS=new ArrayList< String>();
+	static ArrayList<Double>OWNER_PALANCE=new ArrayList<Double>();
+
+
+    static administrator a1=new administrator();
+    
+    public static void set_palance(double palance)
+    {
+    account_palance=palance;
+    }
+    public static double get_palance()
+    {
+    return account_palance;
+    }
+    
+public static void AddPlyground(){
+	
+	PlaygroundOwner o4=new PlaygroundOwner();
+	System.out.println("enter your name:");
+	Scanner nam=new Scanner(System.in);
+	name=nam.nextLine();
+	System.out.println("enter your address:");
+	Scanner add=new Scanner(System.in);
+	address=add.nextLine();
+	System.out.println("enter your email:");
+	Scanner mail=new Scanner(System.in);
+	email=mail.nextLine();
+	System.out.println("enter plyground type:");
+	Scanner input=new Scanner(System.in);
+	playground_type=input.nextLine();
+	System.out.println("enter plyground location:");
+	Scanner loc=new Scanner(System.in);
+	playground_location=loc.nextLine();
+	System.out.println("enter plyground capacity:");
+	Scanner cap=new Scanner(System.in);
+	playground_capacty=cap.nextInt();
+	System.out.println("enter the price per hour:");
+	Scanner p=new Scanner(System.in);
+	price_per_hour=p.nextDouble();
+	System.out.println("enter the available time slot:");
+	Scanner A=new Scanner(System.in);
+	available_slot=A.nextInt();
+	if(a1.approve()==true){
+	//OWNERSNAME.add(name);
+	//OWNERSADDRESS.add(address);
+	//OWNERSEMAILS.add(email);
+	PLAYGROUND_TYPE.add(playground_type);
+	PLAYGROUND_LOCATION.add(playground_location);
+	PLAYGROUND_CAPACITY.add(playground_capacty);
+	AVAILABLE_SLOTS.add(available_slot);
+	PRICE_PER_HOUR.add(price_per_hour);}
+	
+
+}
+
+public static void show(){
+	for(int i=0;i<OWNERSNAME.size();i++){
+		System.out.println("playground type:"+" "+PLAYGROUND_TYPE.get(i)+"  "+"playground location:"+" "+PLAYGROUND_LOCATION.get(i)+"  "+"playground capacity:"+" "+PLAYGROUND_CAPACITY.get(i)+"  "+"available slot:"+" "+AVAILABLE_SLOTS.get(i)+"  "+"hourly price:"+PRICE_PER_HOUR.get(i)+"ownername:"+" "+OWNERSNAME.get(i) +"  "+"owneraddress"+" "+ OWNERSADDRESS.get(i) +"  "+"owneremail"+" "+OWNERSEMAILS.get(i));
+	}
+}
+
+public static void create_profile(){
+	
+	System.out.println("enter your name:");
+	Scanner nam=new Scanner(System.in);
+	name=nam.nextLine();
+	System.out.println("enter your address:");
+	Scanner add=new Scanner(System.in);
+	address=add.nextLine();
+	System.out.println("enter your email:");
+	Scanner mail=new Scanner(System.in);
+	email=mail.nextLine();
+	OWNERSNAME.add(name);
+	OWNERSADDRESS.add(address);
+	OWNERSEMAILS.add(email);
+}
+
+public static void showowners(){
+	for(int i=0;i<OWNERSNAME.size();i++){
+		System.out.println("ownername:"+" "+OWNERSNAME.get(i) +"  "+"owneraddress"+" "+ OWNERSADDRESS.get(i) +"  "+"owneremail"+" "+OWNERSEMAILS.get(i));
+	}
+}
+
+}

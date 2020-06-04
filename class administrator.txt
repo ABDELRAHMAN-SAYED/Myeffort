@@ -1,0 +1,46 @@
+package f;
+
+import java.util.ArrayList;
+
+public class administrator {
+	String name="podo&malak";
+	String password="pmteam";
+
+
+
+
+    public static PlaygroundOwner p8=new PlaygroundOwner();
+   static  player p3=new player();
+	public static boolean approve(){
+		if((p8.playground_type=="grass" || p8.playground_type=="asphalt") || p8.price_per_hour<=150.0 || p8.playground_capacty<=7)
+		{
+return true	;	}
+		else{
+return false;		}
+		
+	}
+public static void show_reserved_playgrounds(){
+	p3.show_reserved_playgrounds();
+}
+public static void show_playground_owners(){
+	if(p8.OWNERSNAME.isEmpty()){
+		System.out.println("sorry there is no owners yet to be shown");
+	}
+	else{
+		for(int i=0;i<p8.OWNERSNAME.size();i++){
+			System.out.println("owner name:"+p8.OWNERSNAME.get(i)+"  "+"palance:"+p8.OWNER_PALANCE.get(i));
+		}
+	}
+	
+	}
+public static void show_players_palance(){
+	if(p3.PLAYERPALANCE.isEmpty()){
+		System.out.println("sorry there is no players registered yet");
+	}
+	else{
+		for(int i=0;i<p3.PLAYERSNAME.size();i++){
+			System.out.println("player name:"+p3.PLAYERSNAME.get(i)+"  "+"palance:"+p3.PLAYERPALANCE.get(i));
+		}
+	}
+}
+}

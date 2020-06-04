@@ -1,0 +1,132 @@
+package f;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class player {
+	
+	static ArrayList<team>TEAMS=new ArrayList< team>();
+	static ArrayList<playgrounds>BOOKED=new ArrayList();
+	static ArrayList<String>PLAYERSNAME=new ArrayList< String>();
+	static ArrayList<String>PLAYERSADDRESS=new ArrayList< String>();
+	static ArrayList<String>PLAYERSEMAILS=new ArrayList< String>();
+	static ArrayList<Double>PLAYERPALANCE=new ArrayList< Double>();
+	
+	administrator a5=new administrator();
+	static String name,address,email,teamleader;
+	static double palance=500.0;
+	public static void create_profile(){
+		
+		System.out.println("enter your name:");
+		Scanner nam=new Scanner(System.in);
+		name=nam.nextLine();
+		System.out.println("enter your address:");
+		Scanner add=new Scanner(System.in);
+		address=add.nextLine();
+		System.out.println("enter your email:");
+		Scanner mail=new Scanner(System.in);
+		email=mail.nextLine();
+		PLAYERSNAME.add(name);
+		PLAYERSADDRESS.add(address);
+		PLAYERSEMAILS.add(email);
+	}
+	public static void create_team(){
+		int no;
+		player p4=new player();
+		String nam,rol;
+		System.out.println("enter number of players in your team:");
+		Scanner num=new Scanner(System.in);
+		no=num.nextInt();
+		System.out.println("enter your name:");
+		Scanner creator=new Scanner(System.in);
+		teamleader=creator.nextLine();
+		for(int i=0;i<no;i++){
+			System.out.println("enter name of player #"+(i+1)+" in your team:");
+			Scanner NAME=new Scanner(System.in);
+			nam=NAME.nextLine();
+			System.out.println("enter role of player #"+(i+1)+" in your team:");
+			Scanner ROLE=new Scanner(System.in);
+			rol=ROLE.nextLine();
+			team t1=new team(nam,rol,p4);
+			TEAMS.add(t1);
+			
+		}
+		
+	}
+	
+	public static void show_players(){
+		for(int i=0;i<PLAYERSNAME.size();i++){
+			System.out.println("playername:"+" "+PLAYERSNAME.get(i) +"  "+"playeraddress"+" "+ PLAYERSADDRESS.get(i) +"  "+"playeremail"+" "+PLAYERSEMAILS.get(i));
+		}
+
+	}
+	public static void show_teams(){
+		System.out.println("TEAM LEADER AND CREATOR IS:"+" "+teamleader);
+		for(int i=0;i<TEAMS.size();i++){
+			System.out.println(TEAMS.get(i).tostring() );
+		}
+
+	}
+	
+	public static void book_playground()
+	{
+		PlaygroundOwner p5=new PlaygroundOwner();
+		player p3=new player();
+		String playground_type,location;
+		int playground_capacity,slot;
+		double price_per_hour;
+		System.out.println("enter the type of the playground you want to book(grass or asphalt");
+		Scanner TYPE=new Scanner(System.in);
+		playground_type=TYPE.nextLine();
+		System.out.println("enter the location of the playground you want to book");
+		Scanner LOCATION=new Scanner(System.in);
+		location=LOCATION.nextLine();
+		System.out.println("enter the capacity of the playground you want to book");
+		Scanner CAPACITY=new Scanner(System.in);
+		playground_capacity=CAPACITY.nextInt();
+		System.out.println("enter the time slot that you wnt to play in the playground you want to book");
+		Scanner SLOT=new Scanner(System.in);
+		slot=SLOT.nextInt();
+		System.out.println("enter the hourly price of the playground you want to book");
+		Scanner HOURLY_PRICE=new Scanner(System.in);
+		price_per_hour=HOURLY_PRICE.nextInt();
+		//p5.set_palance(price_per_hour);
+		p5.OWNER_PALANCE.add(price_per_hour);
+		p3.PLAYERPALANCE.add((palance-price_per_hour));
+		boolean check1=p5.PLAYGROUND_TYPE.contains(playground_type);
+		boolean check2=p5.PLAYGROUND_LOCATION.contains(location);
+		boolean check3=p5.PLAYGROUND_CAPACITY.contains(	playground_capacity);
+		boolean check4=p5.PRICE_PER_HOUR.contains(price_per_hour);
+		boolean check5=p5.AVAILABLE_SLOTS.contains(slot);
+		if(check1==true &&  check2==true && check3==true && check4==true && check5==true)
+		{
+			System.out.println("the suitable playgrounds to the entered specifications:");
+			for(int i=0;i<1;i++){
+				System.out.println("type:"+" "+playground_type+" " +"location:"+" "+ location +" "+"capacity:"+" "+ playground_capacity +" "+"hourly price:"+" "+price_per_hour+" "+"available time slot"+" "+slot);
+			}
+			playgrounds p0=new playgrounds(playground_type,location,playground_capacity,price_per_hour,slot);
+			BOOKED.add(p0);
+		}
+		
+		
+		
+		
+	}
+	public static void show_reserved_playgrounds(){
+		if(BOOKED.isEmpty()){
+			System.out.println("sorry there is no playgrounds booked yet to be shown");
+		}
+		else{
+		for(int i=0;i<BOOKED.size();i++){
+			System.out.println("type:"+BOOKED.get(i).tostring());
+		}
+		}
+	}
+	
+	
+	//public static void main(String []args){
+	//	create_team();
+	//	show_teams();
+		
+//	}
+	}
