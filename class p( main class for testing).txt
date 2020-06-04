@@ -1,0 +1,273 @@
+package f;
+import java.util.*;
+
+public class p {
+
+	static ArrayList<String>FIRSTNAME=new ArrayList<String>();
+	static ArrayList<String>LASTNAME=new ArrayList<String>();
+	static ArrayList<String>USERNAME=new ArrayList<String>();
+	static ArrayList<String>PASSWORD=new ArrayList<String>();
+	static ArrayList<String>LOGINPASSWORD=new ArrayList<String>();
+	static ArrayList<String>LOGINUSERNAME=new ArrayList<String>();
+	static ArrayList<String>OWNERSPASSWORD=new ArrayList<String>(); 
+	static ArrayList<String>PLAYERPASSWORD=new ArrayList<String>(); 
+	static ArrayList<String>ADMINUSERNAME=new ArrayList<String>(); 
+	static ArrayList<String>ADMINPASSWORD=new ArrayList<String>(); 
+    static administrator a4=new administrator();
+	static PlaygroundOwner o=new PlaygroundOwner();
+	static player p6=new player();
+	static String first,last,username;
+	static String password;
+	public static void register()
+	{
+		System.out.println("please enter first name :");
+		Scanner fname=new Scanner(System.in);
+		first=fname.nextLine();
+		System.out.println("please enter last name :");
+		Scanner lname=new Scanner(System.in);
+		last=lname.nextLine();
+		System.out.println("please enter username :");
+		Scanner uname=new Scanner(System.in);
+		username=uname.nextLine();
+		System.out.println("please enter password :");
+		Scanner pass=new Scanner(System.in);
+		password=pass.nextLine();
+		FIRSTNAME.add(first);
+		LASTNAME.add(last);
+		USERNAME.add(username);
+		PASSWORD.add(password);
+		boolean check1=LOGINUSERNAME.contains(username);
+		boolean check2=LOGINPASSWORD.contains(password);
+		if(check1 ==true && check2==true)
+		{
+			System.out.println("sorry this username and password is alredy logged in ");
+		}
+		else
+		{
+			System.out.println("congratulations you had registered successfully");
+			LOGINUSERNAME.add(username);
+			LOGINPASSWORD.add(password);
+			
+		}
+		
+		
+	}
+public static void login(){
+	String adminName="podo";
+	String AdminPassword="podo&malak";
+	ADMINUSERNAME.add(adminName);
+	ADMINPASSWORD.add(AdminPassword);
+	
+	//LOGINUSERNAME.add(adminName);
+	//LOGINPASSWORD.add(AdminPassword);
+	//PLAYERPASSWORD.add(AdminPassword);
+	//OWNERSPASSWORD.add(AdminPassword);
+	String username,password;
+	System.out.println("please enter username :");
+	Scanner uname=new Scanner(System.in);
+	username=uname.nextLine();
+	System.out.println("please enter password :");
+	Scanner pass=new Scanner(System.in);
+	password=pass.nextLine();
+	
+		boolean user=LOGINUSERNAME.contains(username);
+		boolean passw=LOGINPASSWORD.contains(password);
+		boolean check2=ADMINUSERNAME.contains(username);
+		boolean check3=ADMINPASSWORD.contains(password);
+		if(user ==true && passw==true)
+		{
+			System.out.println("congratulations you logged in successfully !!!");
+			
+			
+			boolean role=PLAYERPASSWORD.contains(password);
+			boolean rol=OWNERSPASSWORD.contains(password);
+			
+			if(role ==true){
+				int CHOICE;
+				int option;
+				System.out.println("you are player!!");
+				
+				do{
+					System.out.println("[1] book playground [2]create profile [3]create team [4]show teams [5]show all players");
+					Scanner input=new Scanner(System.in);
+					CHOICE=input.nextInt();
+					if(CHOICE==1){
+						p6.book_playground();
+					}
+					else if(CHOICE==2){
+						p6.create_profile();
+					}
+					else if(CHOICE==3){
+						p6.create_team();
+					}
+					else if(CHOICE==4){
+						p6.show_teams();
+					}
+					else if(CHOICE==5){
+						p6.show_players();
+					}
+					else{
+						System.out.println("wrong choice please choose a right number ");
+						CHOICE=input.nextInt();
+					}
+					
+					System.out.println("want to perform another option? press 1");
+					Scanner OPTION=new Scanner(System.in);
+					option=OPTION.nextInt();
+					}while(option==1);
+				
+			}
+			 if(rol==true){System.out.println("you are playground owner!!");
+			 int enter;
+			 int option;
+				do{
+					System.out.println("[1] add playground [2]create profile [3]show all playgrounds [4] show playgrounds owners");
+					Scanner input=new Scanner(System.in);
+					enter=input.nextInt();
+					if(enter==1){
+				o.AddPlyground();
+				
+					}
+					 if(enter==2){
+					o.create_profile();
+				
+					}
+					
+					 if(enter==3){
+		o.show();}
+					
+					 if(enter==4){
+		o.showowners();}
+					
+					
+					System.out.println("want to perform another option? press 1");
+					Scanner OPTION=new Scanner(System.in);
+					option=OPTION.nextInt();
+					}while(option ==1);
+			 }
+			 
+			
+			
+			
+		}
+		 else if(check2==true && check3==true){
+			int option;	
+			 do{
+				System.out.println("WELCOME ADMINISTRATOR:"+adminName);
+				System.out.println("[1]show the booked playgrounds [2]show owners palances [3]show players palances ");
+
+				Scanner inter=new Scanner(System.in);
+				int optional=inter.nextInt();
+				if(optional==1){
+					a4.show_reserved_playgrounds();
+				}
+				else if(optional==2){
+					a4.show_playground_owners();
+				}
+				else if(optional==3){
+					a4.show_players_palance();
+				}
+				System.out.println("want to perform another option? press 1");
+				Scanner OPTION=new Scanner(System.in);
+				option=OPTION.nextInt();
+		 }while(option ==1);
+		 }
+		else
+		{
+			System.out.println("username or password is wrong !");
+			
+		}
+		
+	}
+	
+public static void main(String []args){
+	int choose,mychoice;
+	String adminName="podo";
+	String AdminPassword="podo and malak";
+	LOGINUSERNAME.add(adminName);
+	LOGINPASSWORD.add(AdminPassword);
+
+	while(true)
+	{
+		System.out.println("[1]login or [2]register");
+		Scanner choice=new Scanner(System.in);
+		choose=choice.nextInt();
+		if(choose==1)
+		{
+			login();
+			}
+		
+		else if(choose==2){
+			
+			System.out.println("register as [1]player or [2]playground owner?");
+			Scanner select=new Scanner(System.in);
+			mychoice=select.nextInt();
+			if(mychoice==1){
+				int CHOICE;
+				register();
+				PLAYERPASSWORD.add(password);
+				int c;
+				String option;
+				do{
+				System.out.println("[1] book playground [2]create profile [3]create team [4]show teams [5]show all players");
+				Scanner input=new Scanner(System.in);
+				CHOICE=input.nextInt();
+				if(CHOICE==1){
+					p6.book_playground();
+				}
+				 if(CHOICE==2){
+					p6.create_profile();
+				}
+				 if(CHOICE==3){
+					p6.create_team();
+				}
+				 if(CHOICE==4){
+					p6.show_teams();
+				}
+			 if(CHOICE==5){
+					p6.show_players();
+				}
+			
+					System.out.println("want another option? press 1 ");
+					Scanner Input=new Scanner(System.in);
+					c=Input.nextInt();
+			
+				
+			}while(c==1);
+			}
+			else if(mychoice==2){
+				int enter,c;
+				String option;
+				register();
+				OWNERSPASSWORD.add(password);
+				do{
+				System.out.println("[1] add playground [2]create profile [3]show all playgrounds [4] show playgrounds owners");
+				Scanner input=new Scanner(System.in);
+				enter=input.nextInt();
+				if(enter==1){
+			o.AddPlyground();
+			
+				}
+				 if(enter==2){
+				o.create_profile();
+			
+				}
+				
+				 if(enter==3){
+	o.show();}
+				
+				 if(enter==4){
+	o.showowners();}
+				 System.out.println("want another option? press 1 ");
+					Scanner Input=new Scanner(System.in);
+					c=Input.nextInt();			
+					
+			
+				
+			}while(c==1);
+			}
+		}
+	}
+}
+	
+}
